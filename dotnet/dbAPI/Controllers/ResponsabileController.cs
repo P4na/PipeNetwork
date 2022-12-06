@@ -7,6 +7,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace dbAPI.Controllers
 {
+
+    public class UserData
+    {
+        public String email { get; set; }
+        public String pwd { get; set; }
+
+        public bool authenticate()
+        {
+            bool isAuth = false;
+            if (this.email.Equals("m.rossi@gmail.com"))
+            {
+                isAuth = true;
+            } else
+            {
+                isAuth = false;
+            }
+            return isAuth;
+        }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class ResponsabileController : ControllerBase
@@ -40,11 +60,31 @@ namespace dbAPI.Controllers
 
         // POST api/<ResponsabileController>
         [HttpPost]
-        public async Task<ActionResult<List<Responsabile>>> Post(Responsabile responsabile)
+        public async Task<ActionResult<UserData>> Post(Responsabile responsabile)
         {
             _context.Responsabiles.Add(responsabile);
             await _context.SaveChangesAsync();
             return Ok(await _context.Responsabiles.ToListAsync());
+        }
+
+        // POST api/<ResponsabileController>
+        [HttpPost("login")]
+        public async Task<ActionResult<List<Responsabile>>> Login(UserData user)
+        {   
+            var listUsers = await _context.Responsabiles.ToListAsync();
+
+            for(int i = 0; i < listUsers.Count; i++)
+            {
+                if(listUsers[i].Email.Equals(user.email))
+                {
+                    if (listUsers[i].Password.Equals(user.pwd))
+                    {
+                        return Ok(listUsers[i]);
+                    }
+                    return BadRequest("Uncorrect password");
+                }
+            } 
+            return  BadRequest("Responsabile not found");
         }
 
         // PUT api/<ResponsabileController>/5
@@ -52,7 +92,7 @@ namespace dbAPI.Controllers
         public async Task<ActionResult<List<Responsabile>>> Put(Responsabile request)
         {
             var responsabile = await _context.Responsabiles.FindAsync(request.Id);
-            if (responsabile == null) { return BadRequest("Hero not found"); }
+            if (responsabile == null) { return BadRequest("Responsabile not found"); }
 
             responsabile.Nome = request.Nome;
             responsabile.Cognome = request.Cognome;
@@ -75,7 +115,7 @@ namespace dbAPI.Controllers
             var dbResponsabile = await _context.Responsabiles.FindAsync(id);
             if (dbResponsabile == null)
             {
-                return BadRequest("Hero not Found");
+                return BadRequest("Responsabile not Found");
             }
             _context.Responsabiles.Remove(dbResponsabile);
             await _context.SaveChangesAsync();

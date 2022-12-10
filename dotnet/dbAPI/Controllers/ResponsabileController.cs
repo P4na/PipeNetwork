@@ -13,18 +13,6 @@ namespace dbAPI.Controllers
         public String email { get; set; }
         public String pwd { get; set; }
 
-        public bool authenticate()
-        {
-            bool isAuth = false;
-            if (this.email.Equals("m.rossi@gmail.com"))
-            {
-                isAuth = true;
-            } else
-            {
-                isAuth = false;
-            }
-            return isAuth;
-        }
     }
 
     [Route("api/[controller]")]

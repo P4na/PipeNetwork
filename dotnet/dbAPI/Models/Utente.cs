@@ -11,7 +11,7 @@ public partial class Utente
 
     public string Cognome { get; set; } = null!;
 
-    public DateOnly Nascita { get; set; }
+    public DateOnly? Nascita { get; set; }
 
     public string Email { get; set; } = null!;
 
@@ -22,6 +22,8 @@ public partial class Utente
     public string? CartaDebito { get; set; }
 
     public DateOnly? Iscrizione { get; set; }
+
+    public string? Paese { get; set; }
 
     public virtual CartaDebito? CartaDebitoNavigation { get; set; }
 }

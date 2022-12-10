@@ -18,4 +18,14 @@ public partial class Lead
     public string? Cellulare { get; set; }
 
     public string? Indirizzo { get; set; }
+
+    public DateOnly? ArrivoLead { get; set; }
+
+    public bool? InNewsLetter { get; set; }
+
+    public bool? IsCalled { get; set; }
+
+    public bool? InFreeTrial { get; set; }
+
+    public long Stage { get; set; }
 }

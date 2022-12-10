@@ -110,6 +110,7 @@ public partial class GcmaucfjContext : DbContext
             entity.ToTable("lead", "pipeNetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.ArrivoLead).HasColumnName("arrivoLead");
             entity.Property(e => e.Cellulare)
                 .HasColumnType("character varying")
                 .HasColumnName("cellulare");
@@ -119,13 +120,17 @@ public partial class GcmaucfjContext : DbContext
             entity.Property(e => e.Email)
                 .HasColumnType("character varying")
                 .HasColumnName("email");
+            entity.Property(e => e.InFreeTrial).HasColumnName("inFreeTrial");
+            entity.Property(e => e.InNewsLetter).HasColumnName("inNewsLetter");
             entity.Property(e => e.Indirizzo)
                 .HasColumnType("character varying")
                 .HasColumnName("indirizzo");
+            entity.Property(e => e.IsCalled).HasColumnName("isCalled");
             entity.Property(e => e.Nascita).HasColumnName("nascita");
             entity.Property(e => e.Nome)
                 .HasColumnType("character varying")
                 .HasColumnName("nome");
+            entity.Property(e => e.Stage).HasColumnName("stage");
         });
 
         modelBuilder.Entity<Licenza>(entity =>
@@ -245,6 +250,9 @@ public partial class GcmaucfjContext : DbContext
             entity.Property(e => e.Nome)
                 .HasColumnType("character varying")
                 .HasColumnName("nome");
+            entity.Property(e => e.Paese)
+                .HasColumnType("character varying")
+                .HasColumnName("paese");
 
             entity.HasOne(d => d.CartaDebitoNavigation).WithMany(p => p.Utentes)
                 .HasForeignKey(d => d.CartaDebito)

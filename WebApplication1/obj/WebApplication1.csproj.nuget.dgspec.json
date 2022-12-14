@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vince\\Desktop\\webApi3\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\vince\\Desktop\\PipeNetwork\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vince\\Desktop\\webApi3\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\vince\\Desktop\\PipeNetwork\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vince\\Desktop\\webApi3\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\vince\\Desktop\\PipeNetwork\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\vince\\Desktop\\webApi3\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "C:\\Users\\vince\\Desktop\\PipeNetwork\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\vince\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vince\\Desktop\\webApi3\\WebApplication1\\obj\\",
+        "outputPath": "C:\\Users\\vince\\Desktop\\PipeNetwork\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vince\\AppData\\Roaming\\NuGet\\NuGet.Config",

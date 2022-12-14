@@ -69,7 +69,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.TxId).HasName("acquisto_pkey");
 
-            entity.ToTable("acquisto", "pipeNetwork");
+            entity.ToTable("acquisto", "pipenetwork");
 
             entity.Property(e => e.TxId).HasColumnName("txId");
             entity.Property(e => e.CartaDebito)
@@ -94,7 +94,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Numero).HasName("cartaDebito_pkey");
 
-            entity.ToTable("cartaDebito", "pipeNetwork");
+            entity.ToTable("cartaDebito", "pipenetwork");
 
             entity.Property(e => e.Numero)
                 .HasColumnType("character varying")
@@ -109,7 +109,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("lead_pkey");
 
-            entity.ToTable("lead", "pipeNetwork");
+            entity.ToTable("lead", "pipenetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ArrivoLead).HasColumnName("arrivoLead");
@@ -139,7 +139,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("licenza_pkey");
 
-            entity.ToTable("licenza", "pipeNetwork");
+            entity.ToTable("licenza", "pipenetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DataAttivazione).HasColumnName("dataAttivazione");
@@ -161,9 +161,9 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("Message_pkey");
 
-            entity.ToTable("message", "pipeNetwork");
+            entity.ToTable("message", "pipenetwork");
 
-            entity.Property(e => e.Id).HasDefaultValueSql("nextval('\"pipeNetwork\".\"Message_Id_seq\"'::regclass)");
+            entity.Property(e => e.Id).HasDefaultValueSql("nextval('pipenetwork.\"Message_Id_seq\"'::regclass)");
             entity.Property(e => e.Contenuto)
                 .HasColumnType("character varying")
                 .HasColumnName("contenuto");
@@ -175,7 +175,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("relationTicketMessage_pkey");
 
-            entity.ToTable("relationTicketMessage", "pipeNetwork");
+            entity.ToTable("relationTicketMessage", "pipenetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.MessageId).HasColumnName("messageId");
@@ -196,7 +196,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("responsabile_pkey");
 
-            entity.ToTable("responsabile", "pipeNetwork");
+            entity.ToTable("responsabile", "pipenetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Cellulare)
@@ -224,7 +224,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.ProductKey).HasName("software_pkey");
 
-            entity.ToTable("software", "pipeNetwork");
+            entity.ToTable("software", "pipenetwork");
 
             entity.Property(e => e.ProductKey)
                 .HasColumnType("character varying")
@@ -238,7 +238,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("ticket_pkey");
 
-            entity.ToTable("ticket", "pipeNetwork");
+            entity.ToTable("ticket", "pipenetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.MainObject)
@@ -258,7 +258,7 @@ public partial class GcmaucfjContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("utente_pkey");
 
-            entity.ToTable("utente", "pipeNetwork");
+            entity.ToTable("utente", "pipenetwork");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CartaDebito)

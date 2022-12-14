@@ -31,7 +31,6 @@ namespace WebApplication1.Controllers
         {
             var ticket = await _context.Tickets.FindAsync(id);
             if (ticket == null) { return BadRequest("Ticket not found"); }
-
             return Ok(ticket);
         }
 
@@ -42,14 +41,8 @@ namespace WebApplication1.Controllers
             var tickets = from tick in _context.Tickets
                           join user in _context.Utentes on tick.Utente equals user.Id   
                           select tick;
-            //var ticket = await _context.Tickets.FindAsync(id);
-            //if (ticket == null) { return BadRequest("Ticket not found"); }
-
-            if(tickets.Count<Ticket>() == 0) 
-            {
-                return BadRequest("not found tickets");
-            }
-
+            
+            if(tickets.Count<Ticket>() == 0) { return BadRequest("not found tickets");}
             return Ok(tickets);
         }
 
@@ -68,11 +61,10 @@ namespace WebApplication1.Controllers
         {
             var ticket = await _context.Tickets.FindAsync(request.Id);
             if (ticket == null) { return BadRequest("Ticket not found"); }
-            
+    
             ticket.Status = request.Status;
             ticket.MainObject = request.MainObject;
-            
-            
+                    
             await _context.SaveChangesAsync();
             return Ok(await _context.Tickets.ToListAsync());
         }
@@ -83,9 +75,8 @@ namespace WebApplication1.Controllers
         {
             var dbTicket= await _context.Tickets.FindAsync(id);
             if (dbTicket == null)
-            {
-                return BadRequest("Ticket not Found");
-            }
+            { return BadRequest("Ticket not Found");}
+
             _context.Tickets.Remove(dbTicket);
             await _context.SaveChangesAsync();
             return Ok(await _context.Tickets.ToListAsync());

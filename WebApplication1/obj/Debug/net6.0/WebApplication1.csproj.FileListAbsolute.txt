@@ -118,3 +118,8 @@ C:\Users\vince\Desktop\PipeNetwork\WebApplication1\obj\Debug\net6.0\refint\WebAp
 C:\Users\vince\Desktop\PipeNetwork\WebApplication1\obj\Debug\net6.0\WebApplication1.pdb
 C:\Users\vince\Desktop\PipeNetwork\WebApplication1\obj\Debug\net6.0\WebApplication1.genruntimeconfig.cache
 C:\Users\vince\Desktop\PipeNetwork\WebApplication1\obj\Debug\net6.0\ref\WebApplication1.dll
+C:\Users\vince\Desktop\PipeNetwork\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\vince\Desktop\PipeNetwork\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\vince\Desktop\PipeNetwork\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\vince\Desktop\PipeNetwork\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\vince\Desktop\PipeNetwork\WebApplication1\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

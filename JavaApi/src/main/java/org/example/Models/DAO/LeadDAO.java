@@ -7,5 +7,5 @@ public interface LeadDAO {
     public List<Lead> getAllLeads();
     public Lead getLeadByID(long l);
     public void deleteLeadByID(long l);
-    public Lead updateLead(Lead l);
+    public void updateLead(Lead l);
 }

@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<Utente>> Get(long id)
         {
             var User = await _context.Utentes.FindAsync(id);
-            if (User == null) { return BadRequest("Utente not found"); }
+            if (User == null) { return NotFound("Utente not found"); }
 
             return Ok(User);
         }
@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<List<Utente>>> Put(Utente request)
         {
             var responsabile = await _context.Utentes.FindAsync(request.Id);
-            if (responsabile == null) { return BadRequest("Utente not found"); }
+            if (responsabile == null) { return NotFound("Utente not found"); }
             responsabile.Nome = request.Nome;
             responsabile.Cognome = request.Cognome;
             responsabile.Email = request.Email;
@@ -77,7 +77,7 @@ namespace WebApplication1.Controllers
 
             if (utente== null)
             {
-                return BadRequest("Utente not Found");
+                return NotFound("Utente not Found");
             }
             _context.Utentes.Remove(utente);
             await _context.SaveChangesAsync();

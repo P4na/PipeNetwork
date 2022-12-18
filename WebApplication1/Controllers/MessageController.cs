@@ -30,7 +30,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<Message>> Get(long id)
         {
             var SingleMessage = await _context.Messages.FindAsync(id);
-            if (SingleMessage == null) { return BadRequest("Message not found"); }
+            if (SingleMessage == null) { return NotFound("Message not found"); }
 
             return Ok(SingleMessage);
         }
@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<List<Message>>> Put(Message request)
         {
             var SingleMessage = await _context.Messages.FindAsync(request.Id);
-            if (SingleMessage == null) { return BadRequest("Utente not found"); }
+            if (SingleMessage == null) { return NotFound("Utente not found"); }
             SingleMessage.Contenuto = request.Contenuto;
             SingleMessage.Inviato = request.Inviato;
             SingleMessage.Role = request.Role;
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
 
             if (SingleMessage == null)
             {
-                return BadRequest("SingleMessage not Found");
+                return NotFound("SingleMessage not Found");
             }
             _context.Messages.Remove(SingleMessage);
             await _context.SaveChangesAsync();

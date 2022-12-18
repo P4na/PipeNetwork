@@ -41,7 +41,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<Responsabile>> Get(long id)
         {
             var User = await _context.Responsabiles.FindAsync(id);
-            if (User == null) { return BadRequest("Responsabile not found"); }
+            if (User == null) { return NotFound("Responsabile not found"); }
 
             return Ok(User);
         }
@@ -69,10 +69,10 @@ namespace WebApplication1.Controllers
                     {
                         return Ok(listUsers[i]);
                     }
-                    return BadRequest("Uncorrect password");
+                    return Forbid("Uncorrect password");
                 }
             }
-            return BadRequest("Responsabile not found");
+            return NotFound("Responsabile not found");
         }
 
         // PUT 
@@ -80,7 +80,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<List<Responsabile>>> Put(Responsabile request)
         {
             var responsabile = await _context.Responsabiles.FindAsync(request.Id);
-            if (responsabile == null) { return BadRequest("Responsabile not found"); }
+            if (responsabile == null) { return NotFound("Responsabile not found"); }
 
             responsabile.Nome = request.Nome;
             responsabile.Cognome = request.Cognome;
@@ -103,7 +103,7 @@ namespace WebApplication1.Controllers
             var dbResponsabile = await _context.Responsabiles.FindAsync(id);
             if (dbResponsabile == null)
             {
-                return BadRequest("Responsabile not Found");
+                return NotFound("Responsabile not Found");
             }
             _context.Responsabiles.Remove(dbResponsabile);
             await _context.SaveChangesAsync();

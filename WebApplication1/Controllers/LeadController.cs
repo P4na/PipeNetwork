@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<Lead>> Get(long id)
         {
             var lead = await _context.Leads.FindAsync(id);
-            if (lead == null) { return BadRequest("Lead not found"); }
+            if (lead == null) { return NotFound("Lead not found"); }
 
             return Ok(lead);
         }
@@ -53,7 +53,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<List<Lead>>> Put(Lead request)
         {
             var lead = await _context.Leads.FindAsync(request.Id);
-            if (lead == null) { return BadRequest("Lead not found"); }
+            if (lead == null) { return NotFound("Lead not found"); }
 
             lead.Nome = request.Nome;
             lead.Cognome = request.Cognome;
@@ -78,7 +78,7 @@ namespace WebApplication1.Controllers
             var dbLead = await _context.Leads.FindAsync(id);
             if (dbLead== null)
             {
-                return BadRequest("Ticket not Found");
+                return NotFound("Ticket not Found");
             }
             _context.Leads.Remove(dbLead);
             await _context.SaveChangesAsync();

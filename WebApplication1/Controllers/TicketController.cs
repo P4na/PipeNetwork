@@ -30,7 +30,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<Ticket>> Get(long id)
         {
             var ticket = await _context.Tickets.FindAsync(id);
-            if (ticket == null) { return BadRequest("Ticket not found"); }
+            if (ticket == null) { return NotFound("Ticket not found"); }
             return Ok(ticket);
         }
 
@@ -38,12 +38,27 @@ namespace WebApplication1.Controllers
         [HttpGet("byUser/{id}")]
         public async Task<ActionResult<List<Ticket>>> GetByUser(long id)
         {
-            var tickets = from tick in _context.Tickets
-                          join user in _context.Utentes on tick.Utente equals user.Id   
-                          select tick;
-            
-            if(tickets.Count<Ticket>() == 0) { return BadRequest("not found tickets");}
-            return Ok(tickets);
+            //var tickets = from tick in _context.Tickets
+            //              join user in _context.Utentes on tick.Utente equals id  
+            //              select tick;
+
+            var ticketList = await _context.Tickets.ToListAsync();
+            var tickedSelected = new List<Ticket>();
+
+            for (int i = 0; i < ticketList.Count; i++)
+            {
+                var ticket = ticketList[i];
+                if (ticket.Utente == id) { tickedSelected.Add(ticket); }
+            }
+
+            //if (tickets.Count<Ticket>() == 0) { return NotFound("not found tickets");}
+            //return Ok(tickets);
+
+            if (tickedSelected.Count == 0) 
+            {
+                return NotFound("Not Found tickets");
+            }
+            return Ok(tickedSelected);
         }
 
         // POST api/<TicketController>
@@ -60,7 +75,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<List<Ticket>>> Put(Ticket request)
         {
             var ticket = await _context.Tickets.FindAsync(request.Id);
-            if (ticket == null) { return BadRequest("Ticket not found"); }
+            if (ticket == null) { return NotFound("Ticket not found"); }
     
             ticket.Status = request.Status;
             ticket.MainObject = request.MainObject;
@@ -75,7 +90,7 @@ namespace WebApplication1.Controllers
         {
             var dbTicket= await _context.Tickets.FindAsync(id);
             if (dbTicket == null)
-            { return BadRequest("Ticket not Found");}
+            { return NotFound("Ticket not Found");}
 
             _context.Tickets.Remove(dbTicket);
             await _context.SaveChangesAsync();

@@ -57,19 +57,15 @@ namespace WebApplication1.Controllers
 
                         return Ok(token);
                     }
-                    return BadRequest("Uncorrect password");
+                    return Forbid("Uncorrect password");
                 }
             }
-            return BadRequest("Responsabile not found");
+            return NotFound("Responsabile not found");
         }
 
 
         private string CreateToken(Responsabile responsabile)
         {
-
-
-
-
 
             List<Claim> claims = new List<Claim>()
             {
